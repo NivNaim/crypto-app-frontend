@@ -1,6 +1,7 @@
 :root {
   --light-mode-color: #666;
   --border-color: #ddd;
+  --active-link-color: #6e4afc;
 }
 
 .header {
@@ -29,14 +30,25 @@
 
       a {
         text-decoration: none;
-      }
 
-      .dark-mode-link {
-        color: var(--primary-color);
-      }
+        &.dark-mode-link {
+          color: var(--primary-color);
+        }
 
-      .light-mode-link {
-        color: var(--light-mode-color);
+        &.light-mode-link {
+          color: var(--light-mode-color);
+        }
+
+        &.active {
+          font-weight: bold;
+          border-bottom: 3px solid var(--active-link-color);
+          padding: 2.3vh 0;
+        }
+
+        &.active,
+        &:hover {
+          color: var(--active-link-color);
+        }
       }
     }
   }
