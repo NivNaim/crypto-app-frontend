@@ -1,19 +1,28 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 import classes from "./Login.module.scss";
+import { useAuth } from "../store/auth-context";
 
-interface LoginFormProps {
+interface EmailPasswordFormProps {
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   password: string;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: (e: React.FormEvent) => void;
-  isLoginMode: boolean;
 }
 
-const LoginForm: React.FC<LoginFormProps> = (props) => {
+const EmailPasswordForm: React.FC<EmailPasswordFormProps> = ({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  handleSubmit,
+}) => {
+  const { isLoginMode } = useAuth();
+
   return (
-    <form className={classes["right-container"]} onSubmit={props.handleSubmit}>
+    <form className={classes["right-container"]} onSubmit={handleSubmit}>
       <TextField
         className={classes.input}
         variant="outlined"
@@ -25,8 +34,8 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         name="email"
         autoComplete="email"
         autoFocus
-        value={props.email}
-        onChange={(e) => props.setEmail(e.target.value)}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <TextField
         className={classes.input}
@@ -39,8 +48,8 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         type="password"
         id="password"
         autoComplete="current-password"
-        value={props.password}
-        onChange={(e) => props.setPassword(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
       <Button
         className={classes.submit}
@@ -48,10 +57,20 @@ const LoginForm: React.FC<LoginFormProps> = (props) => {
         fullWidth
         variant="contained"
       >
-        {props.isLoginMode ? "Log In" : "Sign Up"}
+        {isLoginMode ? "Log In" : "Sign Up"}
       </Button>
+      {isLoginMode && (
+        <Link to="/forgot-password" className={classes.link}>
+          Forgot password?
+        </Link>
+      )}
+      {isLoginMode && (
+        <Link to="/auth/sign-up" className={classes.link}>
+          Don't have an account? Sign Up
+        </Link>
+      )}
     </form>
   );
 };
 
-export default LoginForm;
+export default EmailPasswordForm;

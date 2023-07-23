@@ -26,8 +26,8 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<div>Welcome to the home page!</div>} />
-          <Route path="/auth/login" element={<Login isLoginMode={true} />} />
-          <Route path="/auth/sign-up" element={<Login isLoginMode={false} />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/sign-up" element={<Login />} />
         </Routes>
       </AuthProvider>
     </ThemeProvider>
