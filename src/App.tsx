@@ -4,7 +4,7 @@ import Header from "./components/Layout/Header";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, lightTheme } from "./components/UI/Theme";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import AuthProvider from "./store/AuthProvider";
 
 const App = () => {

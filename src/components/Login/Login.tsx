@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Login.module.scss";
-import { useAuth } from "../store/auth-context";
+import { useAuth } from "../../store/auth-context";
 import SocialLoginButtons from "./SocialLoginButtons";
 import EmailPasswordForm from "./EmailPasswordForm";
 

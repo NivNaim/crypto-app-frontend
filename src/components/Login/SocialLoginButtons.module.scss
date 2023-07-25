@@ -1,0 +1,39 @@
+.left-container {
+  gap: 2vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4vh;
+
+  .login-with {
+    border-radius: 5px;
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .google {
+    background-color: var(--google-color);
+
+    &:hover {
+      background-color: var(--google-color-dark);
+    }
+  }
+
+  .facebook {
+    background-color: var(--facebook-color);
+
+    &:hover {
+      background-color: var(--facebook-color-dark);
+    }
+  }
+
+  .github {
+    background-color: var(--github-color);
+
+    &:hover {
+      background-color: var(--github-color-light);
+    }
+  }
+}

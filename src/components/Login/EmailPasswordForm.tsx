@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
-import classes from "./Login.module.scss";
-import { useAuth } from "../store/auth-context";
+// import classes from "./Login.module.scss";
+import classes from "./EmailPasswordForm.module.scss";
+import { useAuth } from "../../store/auth-context";
 
 interface EmailPasswordFormProps {
   email: string;

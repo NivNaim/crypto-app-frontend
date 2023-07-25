@@ -3,8 +3,9 @@ import { Button } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import classes from "./Login.module.scss";
-import { useAuth } from "../store/auth-context";
+// import classes from "./Login.module.scss";
+import { useAuth } from "../../store/auth-context";
+import classes from "./SocialLoginButtons.module.scss";
 
 const SocialLoginButtons: React.FC = () => {
   const {
