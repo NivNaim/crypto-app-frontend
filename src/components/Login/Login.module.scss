@@ -1,5 +1,4 @@
-.login-container {
-  height: 92vh;
+.login-page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,12 +12,6 @@
   .wrapper {
     width: 60%;
     height: 75%;
-    -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
 
     .center-container {
       height: 100%;

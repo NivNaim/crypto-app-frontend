@@ -6,6 +6,7 @@ import { darkTheme, lightTheme } from "./components/UI/Theme";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import AuthProvider from "./store/AuthProvider";
+import Home from "./components/Layout/Home/Home";
 
 const App = () => {
   const initialDarkMode = localStorage.getItem("isDarkMode") === "true";
@@ -25,7 +26,7 @@ const App = () => {
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<div>Welcome to the home page!</div>} />
+          <Route path="/" element={<Home />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/sign-up" element={<Login />} />
         </Routes>

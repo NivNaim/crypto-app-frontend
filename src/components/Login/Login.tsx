@@ -3,6 +3,7 @@ import classes from "./Login.module.scss";
 import { useAuth } from "../../store/auth-context";
 import SocialLoginButtons from "./SocialLoginButtons";
 import EmailPasswordForm from "./EmailPasswordForm";
+import Card from "../UI/Card";
 
 const Login: React.FC = () => {
   const { isLoginMode, handleEmailPasswordSubmit } = useAuth();
@@ -15,11 +16,11 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className={classes["login-container"]}>
+    <div className={`page-container ${classes["login-page"]}`}>
       <h1 className={classes["login-title"]}>
         {isLoginMode ? "Log In" : "Sign Up"}
       </h1>
-      <div className={classes.wrapper}>
+      <Card className={classes.wrapper}>
         <SocialLoginButtons />
         <div className={classes["center-container"]}>
           <div className={classes.line} />
@@ -32,7 +33,7 @@ const Login: React.FC = () => {
           setPassword={setPassword}
           handleSubmit={handleSubmit}
         />
-      </div>
+      </Card>
     </div>
   );
 };
