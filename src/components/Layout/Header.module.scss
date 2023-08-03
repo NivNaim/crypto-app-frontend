@@ -48,6 +48,7 @@
         &.active,
         &:hover {
           color: var(--active-link-color);
+          transform: scale(1.1);
         }
       }
     }
