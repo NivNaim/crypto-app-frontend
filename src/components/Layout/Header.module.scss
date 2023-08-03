@@ -39,6 +39,10 @@
           color: var(--light-mode-color);
         }
 
+        &:not(.active):hover {
+          transform: scale(1.1);
+        }
+
         &.active {
           font-weight: bold;
           border-bottom: 3px solid var(--active-link-color);
@@ -48,7 +52,6 @@
         &.active,
         &:hover {
           color: var(--active-link-color);
-          transform: scale(1.1);
         }
       }
     }
