@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import AuthProvider from "./store/AuthProvider";
 import Home from "./components/Layout/Home/Home";
+import CryptoDataUpdater from "./components/CryptoDataUpdater";
 
 const App = () => {
   const initialDarkMode = localStorage.getItem("isDarkMode") === "true";
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/auth/sign-up" element={<Login />} />
         </Routes>
       </AuthProvider>
+      <CryptoDataUpdater />
     </ThemeProvider>
   );
 };
