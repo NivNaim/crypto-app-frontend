@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import { useState, FormEvent, FC } from "react";
 import classes from "./Login.module.scss";
 import { useAuth } from "../../store/auth-context";
 import SocialLoginButtons from "./SocialLoginButtons";
 import EmailPasswordForm from "./EmailPasswordForm";
 import Card from "../UI/Card";
 
-const Login: React.FC = () => {
+const Login: FC = () => {
   const { isLoginMode, handleEmailPasswordSubmit } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     handleEmailPasswordSubmit(email, password);
   };

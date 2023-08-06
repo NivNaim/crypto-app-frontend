@@ -9,6 +9,7 @@ interface AuthProviderProps {
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoginMode, setIsLoginMode] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -29,7 +30,9 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         );
         console.log("login successful!", response.data);
 
-        navigate("/");
+        setIsAuthenticated(true);
+
+        // navigate("/user/dashboard");
       } else {
         const response = await axios.post(
           "http://localhost:3000/auth/sign-up",
@@ -47,6 +50,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const handleGitHubSubmit = async () => {
     try {
       window.open("http://localhost:3000/github", "_self");
+
+      setIsAuthenticated(true);
     } catch (err) {
       console.error("GitHub Sign-in failed!", err);
     }
@@ -65,6 +70,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       value={{
         isLoginMode,
         setIsLoginMode,
+        isAuthenticated,
         handleEmailPasswordSubmit,
         handleGitHubSubmit,
         handleGoogleSubmit,

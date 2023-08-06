@@ -18,25 +18,22 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
         <div className={classes.routes}>
           <Link
             to="/"
-            className={`${location.pathname === "/" ? classes.active : null} ${
-              classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]
-            }`}
+            className={`${location.pathname === "/" ? classes.active : null} ${classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]
+              }`}
           >
             Home
           </Link>
           <Link
             to="/auth/login"
-            className={`${
-              location.pathname === "/auth/login" ? classes.active : null
-            } ${classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]}`}
+            className={`${location.pathname === "/auth/login" ? classes.active : null
+              } ${classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]}`}
           >
             Login
           </Link>
           <Link
             to="/auth/sign-up"
-            className={`${
-              location.pathname === "/auth/sign-up" ? classes.active : null
-            } ${classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]}`}
+            className={`${location.pathname === "/auth/sign-up" ? classes.active : null
+              } ${classes[isDarkMode ? "dark-mode-link" : "light-mode-link"]}`}
           >
             SignUp
           </Link>

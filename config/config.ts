@@ -1,4 +1,4 @@
-interface SocketClientConfig {
+interface SocketServerConfig {
   timeout: number;
   host: string;
   port: number;
@@ -10,13 +10,13 @@ interface CryptocompareConfig {
 }
 
 interface Config {
-  socketClient: SocketClientConfig;
+  socketServer: SocketServerConfig;
   cryptocompare: CryptocompareConfig;
 }
 
 const config: Config = {
-  socketClient: {
-    timeout: 60000,
+  socketServer: {
+    timeout: 10000,
     host: "localhost",
     port: 3002,
   },

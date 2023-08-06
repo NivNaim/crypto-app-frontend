@@ -1,7 +1,8 @@
 import { createContext, useContext } from "react";
 interface AuthContextProps {
   isLoginMode: boolean;
-  setIsLoginMode: (isLogin: boolean) => void;
+  setIsLoginMode: (isLoginMode: boolean) => void;
+  isAuthenticated: boolean;
   handleEmailPasswordSubmit: (email: string, password: string) => void;
   handleGitHubSubmit: () => void;
   handleGoogleSubmit: () => void;
@@ -10,11 +11,12 @@ interface AuthContextProps {
 
 const AuthContext = createContext<AuthContextProps>({
   isLoginMode: true,
-  setIsLoginMode: () => {},
-  handleEmailPasswordSubmit: () => {},
-  handleGitHubSubmit: () => {},
-  handleGoogleSubmit: () => {},
-  handleFacebookSubmit: () => {},
+  setIsLoginMode: () => { },
+  isAuthenticated: false,
+  handleEmailPasswordSubmit: () => { },
+  handleGitHubSubmit: () => { },
+  handleGoogleSubmit: () => { },
+  handleFacebookSubmit: () => { },
 });
 
 export const useAuth = () => useContext(AuthContext);

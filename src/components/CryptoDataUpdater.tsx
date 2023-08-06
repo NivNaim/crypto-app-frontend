@@ -10,7 +10,7 @@ const CryptoDataUpdater = () => {
 
     useEffect(() => {
         const socket = io(
-            `http://${config.socketClient.host}:${config.socketClient.port}`
+            `http://${config.socketServer.host}:${config.socketServer.port}`
         );
 
         const fetchCryptoRates = async (symbol: string) => {
@@ -54,14 +54,14 @@ const CryptoDataUpdater = () => {
             }
         }
 
-        // const fetchAndUpdateData = async () => {
-        //     await startLoop();
-        //     setTimeout(fetchAndUpdateData, config.socketClient.timeout);
-        // };
+        const fetchAndUpdateData = async () => {
+            await startLoop();
+            setTimeout(fetchAndUpdateData, config.socketServer.timeout);
+        };
 
         socket.on("connect", () => {
             console.log("Socket.IO connected");
-            startLoop();
+            fetchAndUpdateData();
         });
 
         socket.on("disconnect", () => {
