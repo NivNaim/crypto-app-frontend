@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 // import classes from "./Login.module.scss";
@@ -13,7 +13,7 @@ interface EmailPasswordFormProps {
   handleSubmit: (e: React.FormEvent) => void;
 }
 
-const EmailPasswordForm: React.FC<EmailPasswordFormProps> = ({
+const EmailPasswordForm: FC<EmailPasswordFormProps> = ({
   email,
   setEmail,
   password,

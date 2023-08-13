@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classes from "./Header.module.scss";
 import MUISwitch from "../UI/MUISwitch";
@@ -8,7 +9,7 @@ interface HeaderProps {
   toggleDarkMode: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
+const Header: FC<HeaderProps> = ({ isDarkMode, toggleDarkMode }) => {
   const location = useLocation();
 
   return (

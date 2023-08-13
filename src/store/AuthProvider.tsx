@@ -32,7 +32,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
         setIsAuthenticated(true);
 
-        // navigate("/user/dashboard");
+        navigate("/user/dashboard");
       } else {
         const response = await axios.post(
           "http://localhost:3000/auth/sign-up",

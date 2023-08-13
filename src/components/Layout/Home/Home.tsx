@@ -1,31 +1,43 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CryptoChart from "../../UI/CryptoChart";
 import classes from "./Home.module.scss";
-import { useRealTimeData } from "../../../store/real-time-data-context";
+import { io } from "socket.io-client";
+import config from "../../../../config/config";
+
+export interface SymbolValue {
+    value: number;
+    date: string;
+}
 
 const Home = () => {
-    const { realTimeData } = useRealTimeData();
+    const [symbolData, setSymbolData] = useState<{ [symbol: string]: SymbolValue[] }>({});
 
-    // const cryptoData: { date: string; value: number }[] = [
-    //     { date: "2023-07-24", value: 1000 },
-    //     { date: "2023-07-25", value: 1200 },
-    //     { date: "2023-07-26", value: 800 },
-    //     { date: "2023-07-27", value: 1500 },
-    //     { date: "2023-07-28", value: 1300 },
-    //     { date: "2023-07-29", value: 1800 },
-    //     { date: "2023-07-30", value: 2000 },
-    // ];
-
+    
     useEffect(() => {
-        console.log("Real-time data:", realTimeData);
-    }, [realTimeData]);
+        const socket = io(`http://${config.socketServer.host}:${config.socketServer.port}`);
+        
+        socket.on("lastWeekValues", (updatedSymbolData) => {
+            console.log("Updated last week values:", updatedSymbolData);
+            setSymbolData(updatedSymbolData);
+        });
+
+        socket.emit("getTodayData");
+
+        const dailyUpdateInterval = setInterval(() => {
+            socket.emit("getTodayData");
+        }, 24 * 60 * 60 * 1000);
+
+        return () => {
+            socket.disconnect();
+            clearInterval(dailyUpdateInterval);
+        };
+    }, []);
 
     return (
         <div className={`page-container ${classes['home-page']}`}>
-            <CryptoChart data={realTimeData} />
-            <CryptoChart data={realTimeData} />
-            <CryptoChart data={realTimeData} />
-            <CryptoChart data={realTimeData} />
+            {Object.keys(symbolData).map((symbol) => (
+                <CryptoChart key={symbol} symbol={symbol} data={symbolData[symbol]} />
+            ))}
         </div>
     );
 }

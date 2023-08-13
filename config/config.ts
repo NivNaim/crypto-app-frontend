@@ -1,5 +1,4 @@
 interface SocketServerConfig {
-  timeout: number;
   host: string;
   port: number;
 }
@@ -16,7 +15,6 @@ interface Config {
 
 const config: Config = {
   socketServer: {
-    timeout: 10000,
     host: "localhost",
     port: 3002,
   },

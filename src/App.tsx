@@ -6,14 +6,12 @@ import { darkTheme, lightTheme } from "./components/UI/Theme";
 import { Route, Routes } from "react-router-dom";
 import AuthProvider from "./store/AuthProvider";
 import Home from "./components/Layout/Home/Home";
-import CryptoDataUpdater from "./components/CryptoDataUpdater";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
 import Login from "./components/Login/Login";
-import PrivateRoute from "./PrivateRoute";
 
 const App = () => {
   const initialDarkMode = localStorage.getItem("isDarkMode") === "true";
-  const [isDarkMode, setIsDarkMode] = useState(initialDarkMode);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(initialDarkMode);
 
   useEffect(() => {
     localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
@@ -30,12 +28,11 @@ const App = () => {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/auth/login" element={<PrivateRoute path={""} element={undefined} />} />
+          <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/sign-up" element={<Login />} />
           <Route path="/user/dashboard" element={<UserDashboard />} />
         </Routes>
       </AuthProvider>
-      <CryptoDataUpdater />
     </ThemeProvider>
   );
 };

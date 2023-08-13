@@ -1,5 +1,4 @@
-
-import React from "react";
+import { FC } from "react";
 import {
   LineChart,
   Line,
@@ -11,44 +10,23 @@ import {
 } from "recharts";
 import Card from "./Card";
 import classes from "./CryptoChart.module.scss";
-import { RealTimeDataItem } from "../../store/real-time-data-context";
-// import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import { SymbolValue } from "../Layout/Home/Home";
 
-
-// interface CustomLegendProps {
-//   payload?: Array<{ value: any, dataKey: string }>;
-// }
-
-// const CustomLegend: React.FC<CustomLegendProps> = ({ payload }) => {
-//   return (
-//     <ul>
-//       {payload?.map((entry, index) => (
-//         <li key={`item-${index}`}>
-//           {entry.dataKey === "value" && (
-//             <span>
-//               <CurrencyBitcoinIcon style={{ marginRight: "5px" }} />
-//             </span>
-//           )}
-//           {entry.value}
-//         </li>
-//       ))}
-//     </ul>
-//   );
-// };
 
 interface CryptoChartProps {
-  data: RealTimeDataItem[];
+  symbol: string;
+  data: SymbolValue[];
 }
 
-const CryptoChart: React.FC<CryptoChartProps> = ({ data }) => {
+const CryptoChart: FC<CryptoChartProps> = ({ symbol, data }) => {
   return (
     <Card className={classes['crypto-chart-container']}>
+      <h2>{symbol} Chart</h2>
       <LineChart width={500} height={250} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="dateTime" />
+        <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
-        {/* <Legend content={<CustomLegend />} /> */}
         <Legend />
         <Line type="monotone" dataKey="value" stroke="#6e4afc" />
       </LineChart>

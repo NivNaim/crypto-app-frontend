@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import classes from "./Card.module.scss";
 
 interface CardProps {
@@ -6,7 +6,7 @@ interface CardProps {
     children: React.ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ className, children }) => {
+const Card: FC<CardProps> = ({ className, children }) => {
     return (
         <div className={`${classes.card} ${className}`}>
             {children}
