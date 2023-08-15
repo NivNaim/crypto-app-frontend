@@ -36,7 +36,7 @@ const Home = () => {
     return (
         <div className={`page-container ${classes['home-page']}`}>
             {Object.keys(symbolData).map((symbol) => (
-                <CryptoChart key={symbol} symbol={symbol} data={symbolData[symbol]} />
+                <CryptoChart key={symbol} symbol={symbol} data={symbolData[symbol]} width={500} height={250} />
             ))}
         </div>
     );

@@ -16,19 +16,20 @@ import { SymbolValue } from "../Layout/Home/Home";
 interface CryptoChartProps {
   symbol: string;
   data: SymbolValue[];
+  width: number;
+  height: number;
 }
 
-const CryptoChart: FC<CryptoChartProps> = ({ symbol, data }) => {
+const CryptoChart: FC<CryptoChartProps> = (props) => {
   return (
     <Card className={classes['crypto-chart-container']}>
-      <h2>{symbol} Chart</h2>
-      <LineChart width={500} height={250} data={data}>
+      <LineChart width={props.width} height={props.height} data={props.data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="value" stroke="#6e4afc" />
+        <Line type="monotone" dataKey="value" stroke="#6e4afc" name={props.symbol} />
       </LineChart>
     </Card>
   );
