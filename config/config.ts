@@ -1,3 +1,8 @@
+interface AuthenticationService {
+  host: string;
+  port: number;
+}
+
 interface SocketServerConfig {
   host: string;
   port: number;
@@ -9,11 +14,16 @@ interface CryptocompareConfig {
 }
 
 interface Config {
+  authenticationService: AuthenticationService;
   socketServer: SocketServerConfig;
   cryptocompare: CryptocompareConfig;
 }
 
 const config: Config = {
+  authenticationService: {
+    host: "localhost",
+    port: 3000
+  },
   socketServer: {
     host: "localhost",
     port: 3002,

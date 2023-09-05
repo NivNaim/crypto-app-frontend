@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "./auth-context";
+import config from "../../config/config";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       if (isLoginMode) {
         const response = await axios.post(
-          "http://localhost:3000/auth/login",
+          `http://${config.authenticationService.host}:${config.authenticationService.port}/auth/login`,
           data
         );
         console.log("login successful!", response.data);
@@ -35,7 +36,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         navigate("/user/dashboard");
       } else {
         const response = await axios.post(
-          "http://localhost:3000/auth/sign-up",
+          `http://${config.authenticationService.host}:${config.authenticationService.port}/auth/sign-up`,
           data
         );
         console.log("sign-up successful!", response.data);
@@ -49,7 +50,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const handleGitHubSubmit = async () => {
     try {
-      window.open("http://localhost:3000/github", "_self");
+      window.open(`http://${config.authenticationService.host}:${config.authenticationService.port}/github`, "_self");
 
       setIsAuthenticated(true);
     } catch (err) {
